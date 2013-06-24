@@ -8,9 +8,9 @@ import javax.ws.rs.core.Application;
 
 public class CartApplication extends Application{
 
-	private Set<Object> singletons = new HashSet();
+	private Set<Object> singletons = new HashSet<Object>();
 
-	private Set<Class<?>> empty = new HashSet();
+	private Set<Class<?>> empty = new HashSet<Class<?>>();
 
 	 
 

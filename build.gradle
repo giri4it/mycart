@@ -21,25 +21,18 @@ libraryVersions = [
 
 dependencies {
   testCompile group: 'junit', name: 'junit', version: '4.8.+'
-  compile 'org.jboss.resteasy:resteasy-jaxrs:2.2.1.GA'
+  providedCompile 'org.jboss.resteasy:resteasy-jaxrs:2.2.1.GA'
   //compile 'commons-codec:commons-codec:1.5'
 }
 
 
-sourceSets.main.java.srcDirs = ["src/main/java", "srcAdditional/main/java"]
+sourceSets.main.java.srcDirs = ["src/main/java"]
 
 test {
   include '**/Test*.*'
 }
 
 war {
-
-  // Copied to WEB-INF/classes.
-  //classpath sourceSets.main.runtimeClasspath
-  // Custom web.xml.
-  //webXml = file('src/main/webXml/web-dev.xml')
-  // Copied to WEB-INF/lib.
-  //classpath fileTree('libs')
   baseName = 'mycart'
 }
 
