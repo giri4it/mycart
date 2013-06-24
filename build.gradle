@@ -1,0 +1,53 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+
+version = '1.0'
+jbossDeploy = file ('C:/programs/jboss-eap-6.1/standalone/deployments')
+
+repositories {
+  mavenCentral()
+   maven {
+        url "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases"
+    }
+}
+
+//Not used now
+libraryVersions = [
+   junit: '4.8.1', arquillian: '1.0.0.Alpha4', jbossJavaeeSpec: '1.0.0.Beta7', weld: '1.0.1-Final',
+   slf4j: '1.5.8', log4j: '1.2.14', jbossas: '6.0.0.Final', glassfish: '3.0.1-b20', cdi: '1.0-SP1'
+]
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.8.+'
+  compile 'org.jboss.resteasy:resteasy-jaxrs:2.2.1.GA'
+  //compile 'commons-codec:commons-codec:1.5'
+}
+
+
+sourceSets.main.java.srcDirs = ["src/main/java", "srcAdditional/main/java"]
+
+test {
+  include '**/Test*.*'
+}
+
+war {
+
+  // Copied to WEB-INF/classes.
+  //classpath sourceSets.main.runtimeClasspath
+  // Custom web.xml.
+  //webXml = file('src/main/webXml/web-dev.xml')
+  // Copied to WEB-INF/lib.
+  //classpath fileTree('libs')
+  baseName = 'mycart'
+}
+
+task deploy(dependsOn: 'war') << {
+
+  println "Copy from ${war.archivePath}\\libs into ${jbossDeploy}"
+    copy {
+        from war.archivePath
+        into "$jbossDeploy"
+    }
+}
