@@ -1,6 +1,6 @@
 function HomeController($scope) {
 
-	$scope.greeting = "Welcome to ksgababu.com";
+	//alert('home controller called');
 
 }
 
@@ -16,8 +16,8 @@ function LoginController($scope, $http) {
 			headers: {'Content-Type': 'application/json'},
 			url : url,
 			data: {
-			      "login" : "giri",
-			      "password" : "giri"
+			      "login" : $scope.login",
+			      "password" : $scope.password"
 			    }
 		}).success(function(data, status) {
 			$scope.status = status;
@@ -29,15 +29,12 @@ function LoginController($scope, $http) {
 		});
 
 	}
+	
+	//alert('login controller called');
 }
 
 function HomeMenuController($scope) {
-	$scope.menuItems = {
-		1 : "Home",
-		2 : "All about Me",
-		3 : "Bolg",
-		4 : "Login"
-	};
+	alert('home controller called');
 }
 
 function RegistrationController($scope, $http) {
