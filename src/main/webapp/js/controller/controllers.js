@@ -7,11 +7,18 @@ function HomeController($scope) {
 function LoginController($scope, $http) {
 
 	$scope.action = function() {
-		var url = "http://localhost:8080/ksgbabu/myjson.json";
+		
+		alert('test'+$scope.login+' '+$scope.password);
+		var url = "http://localhost:8080/mycart-1.0/rest/login";
 
 		$http({
-			method : 'GET',
-			url : url
+			method : 'POST',
+			headers: {'Content-Type': 'application/json'},
+			url : url,
+			data: {
+			      "login" : "giri",
+			      "password" : "giri"
+			    }
 		}).success(function(data, status) {
 			$scope.status = status;
 			$scope.data = data;

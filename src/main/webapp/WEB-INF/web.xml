@@ -11,6 +11,10 @@
 	  org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
   </listener-class>
   </listener>
+  
+  <listener>
+	<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
+</listener>
  
   <servlet>
   <servlet-name>Resteasy</servlet-name>
@@ -27,8 +31,18 @@
     <param-value>/rest</param-value>
 </context-param>
 
-<context-param>
-  <param-name>resteasy.scan</param-name>
-  <param-value>true</param-value>
-</context-param>
+<!-- disabled auto scanning
+	<context-param>
+		<param-name>resteasy.scan</param-name>
+		<param-value>true</param-value>
+	</context-param>
+        -->
+	<context-param>
+		<param-name>resteasy.resources</param-name>
+		<param-value>com.ksgbabu.mycart.login.LoginRestService</param-value>
+	</context-param>
+
+<resource-env-ref> <resource-env-ref-name>BeanManager</resource-env-ref-name> 
+<resource-env-ref-type>javax.enterprise.inject.spi.BeanManager</resource-env-ref-type> </resource-env-ref>
+
 </web-app>
