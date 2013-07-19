@@ -1,10 +1,6 @@
 package com.ksgbabu.mycart.login;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -19,8 +15,8 @@ public class LoginDao extends AbastractDao{
 
 	public LoginInfo getUserLoginInfo(User user) throws NamingException, SQLException{
 		
-		Connection connection =  getConnection();
-		PreparedStatement stmt = connection.prepareStatement("select login, password from user where login=? and password=?");
+		
+		/*PreparedStatement stmt = connection.prepareStatement("select login, password from user where login=? and password=?");
 		stmt.setString(1,user.getLoginInfo().getLogin());
 		stmt.setString(2, user.getLoginInfo().getPassword());
 		ResultSet rst = stmt.executeQuery();
@@ -34,6 +30,7 @@ public class LoginDao extends AbastractDao{
 		
 		connection.close();
 		LoginInfo loginInfo = new LoginInfo(login,password);
-		return loginInfo;
+		return loginInfo;*/
+		return null;
 	}
 }

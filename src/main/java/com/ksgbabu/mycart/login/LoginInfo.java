@@ -19,7 +19,7 @@ public class LoginInfo {
 	public String getLogin() {
 		return login;
 	}
-	public void setLoign(String login) {
+	public void setLogin(String login) {
 		this.login = login;
 	}
 	public String getPassword() {
@@ -46,7 +46,7 @@ public class LoginInfo {
 	
 	private boolean isCredentialMatch(LoginInfo loginInfo){
 		
-		return login.equals(loginInfo.getLogin()) && password.equals(loginInfo.getPassword());
+		return login.equalsIgnoreCase(loginInfo.getLogin()) && password.equals(loginInfo.getPassword());
 	}
 	
 	

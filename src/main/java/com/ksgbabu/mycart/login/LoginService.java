@@ -24,7 +24,7 @@ public class LoginService {
 	public LoginResult authenticate(User user){
 		
 		LoginResult result = new LoginResult();
-		if(isUserLoginInfoExists(user)) {
+		if(! isUserLoginInfoExists(user)) {
 			return new LoginResult(false);
 		}
 		LoginInfo loginInfo = getLoginInfo(user);

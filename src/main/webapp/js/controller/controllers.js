@@ -1,6 +1,6 @@
 function HomeController($scope) {
 
-	//alert('home controller called');
+	alert('home controller called');
 
 }
 
@@ -8,21 +8,21 @@ function LoginController($scope, $http) {
 
 	$scope.action = function() {
 		
-		alert('test'+$scope.login+' '+$scope.password);
-		var url = "http://localhost:8080/mycart-1.0/rest/login";
-
+		alert('login controller action called');
+		alert('credentials - '+$scope.login+' '+$scope.password);
+		var url = "http://localhost:8080/mycart-1.0/rest/loginservice/login";
+		var data = {};
+		data.login = $scope.login;
+		data.password = $scope.password;
 		$http({
 			method : 'POST',
 			headers: {'Content-Type': 'application/json'},
 			url : url,
-			data: {
-			      "login" : $scope.login",
-			      "password" : $scope.password"
-			    }
+			data: data
 		}).success(function(data, status) {
 			$scope.status = status;
 			$scope.data = data;
-			window.alert(data);
+			alert(data.result);
 		}).error(function(data, status) {
 			$scope.data = data || "Request failed";
 			$scope.status = status;
@@ -30,11 +30,11 @@ function LoginController($scope, $http) {
 
 	}
 	
-	//alert('login controller called');
+	
 }
 
 function HomeMenuController($scope) {
-	alert('home controller called');
+	//alert('home controller called');
 }
 
 function RegistrationController($scope, $http) {

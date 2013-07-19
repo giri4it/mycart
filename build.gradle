@@ -35,6 +35,9 @@ dependencies {
   //compile 'commons-codec:commons-codec:1.5'
 
   compile 'org.jboss.weld.servlet:weld-servlet:2.0.0.SP1'
+  compile ('org.eclipse.persistence:eclipselink:2.5.0-RC1'){
+    	exclude group:'org.eclipse.persistence', module:'commonj.sdo'
+    }
   
   compile 'log4j:log4j:1.2.16'
 
