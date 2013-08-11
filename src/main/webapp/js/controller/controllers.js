@@ -1,6 +1,19 @@
-function HomeController($scope) {
+function HomeController($scope, $http) {
 
-	alert('home controller called');
+	//alert('home controller called');
+	var url = "/rest/category/roots";
+	$http({
+		method : 'GET',
+		headers: {'Content-Type': 'application/json'},
+		url : url
+	}).success(function(data, status) {
+		$scope.status = status;
+		$scope.rootCategories = data;
+		//alert(data.result);
+	}).error(function(data, status) {
+		$scope.data = data || "Request failed";
+		$scope.status = status;
+	});
 
 }
 
@@ -8,9 +21,9 @@ function LoginController($scope, $http) {
 
 	$scope.action = function() {
 		
-		alert('login controller action called');
-		alert('credentials - '+$scope.login+' '+$scope.password);
-		var url = "http://localhost:8080/mycart-1.0/rest/loginservice/login";
+		//alert('login controller action called');
+		//alert('credentials - '+$scope.login+' '+$scope.password);
+		var url = "/rest/loginservice/login";
 		var data = {};
 		data.login = $scope.login;
 		data.password = $scope.password;
@@ -22,7 +35,7 @@ function LoginController($scope, $http) {
 		}).success(function(data, status) {
 			$scope.status = status;
 			$scope.data = data;
-			alert(data.result);
+			//alert(data.result);
 		}).error(function(data, status) {
 			$scope.data = data || "Request failed";
 			$scope.status = status;
